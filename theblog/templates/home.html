@@ -3,7 +3,35 @@
   Home
 {% endblock %}
 {% block content %}
+<br> <br>
+<div class="row">
 
+  {% for post in object_list %}
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <a href=" {% url 'article-detail' post.pk %} " class="card-title">{{post.title}}</a> 
+        <small>-{{post.author.first_name}}</small>
+        <hr>
+        <p class="card-text">{{post.body|slice:":100"}}</p>
+        <small> 
+          {% if user.is_authenticated %}
+          <hr>
+            <a href=" {% url 'update_post' post.pk %} " class="btn btn-info">Edit</a>
+            <a href=" {% url 'delete_post' post.pk %} " class="btn btn-danger">Delete</a>
+          {% endif %}
+        </small>
+      </div>
+    </div><br>
+  </div> 
+  {% endfor %}
+
+</div>
+
+
+
+
+<!-- 
 <h1>Post</h1>
 <ul>
   {% for post in object_list %}
@@ -19,6 +47,6 @@
     {{post.body|slice:":100"}} 
   </li> <br>
   {% endfor %}
-</ul>
+</ul> -->
 
 {% endblock %}
