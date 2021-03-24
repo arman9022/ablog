@@ -10,8 +10,9 @@
   <div class="col-sm-4">
     <div class="card">
       <div class="card-body">
-        <a href=" {% url 'article-detail' post.pk %} " class="card-title">{{post.title}}</a> 
-        <small>-{{post.author.first_name}}</small>
+        <a href=" {% url 'article-detail' post.pk %} " class="card-title" style="font-size: 1.5rem;">{{post.title}}</a> <br>
+        <small>Category: <a href=" {% url 'category' post.category %} "> {{post.category}}</small></a> <br>
+        <small>By: {{post.author.first_name}}</small>
         <hr>
         <p class="card-text">{{post.body|slice:":100"}}</p>
         <small> 
