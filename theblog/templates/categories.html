@@ -12,14 +12,16 @@
         <div class="card">
           <div class="card-body">
             <a href=" {% url 'article-detail' post.pk %} " class="card-title">{{post.title}}</a> 
-            <small>-{{post.author.first_name}}</small>
+            <small>-{{post.author.username}}</small>
             <hr>
             <p class="card-text">{{post.body|slice:":100"}}</p>
             <small> 
               {% if user.is_authenticated %}
-              <hr>
-                <a href=" {% url 'update_post' post.pk %} " class="btn btn-info">Edit</a>
-                <a href=" {% url 'delete_post' post.pk %} " class="btn btn-danger">Delete</a>
+                {% if user.id == post.author.id %}
+                <hr>
+                  <a href=" {% url 'update_post' post.pk %} " class="btn btn-info">Edit</a>
+                  <a href=" {% url 'delete_post' post.pk %} " class="btn btn-danger">Delete</a>
+                {% endif %}
               {% endif %}
             </small>
           </div>
