@@ -3,7 +3,7 @@
   {{post.title}}
 {% endblock %}
 {% block content %}
-
+<br>
 <h1> {{post.title}} </h1>
 <small>By: {{post.author.username}} - {{post.post_date}} 
   {% if user.is_authenticated %}

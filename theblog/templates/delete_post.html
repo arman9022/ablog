@@ -6,6 +6,7 @@ Edit Post
 
 {% if user.is_authenticated %}
   {% if user.id == post.author.id %}
+    <br>
     <h1>Delete Post</h1>
     <h3>Delete {{post.title}} </h3>
     <div class="form-group">
